@@ -1,5 +1,5 @@
 const ClientFile = require("../database-storage/clients/ClientFile");
-const ProductsDatabase = require("../database-storage/ProductsDatabase");
+const { ProductsDatabase, NotFoundError } = require("../database-storage/ProductsDatabase");
 const path = require("path");
 const fileClient = new ClientFile(
     path.resolve(__dirname, "../data/products.json")
@@ -24,21 +24,30 @@ const createProduct = async (req, res) => {
 const deleteProduct = async (req, res) => {
     const id = req.query.id;
 
-    await dao.deleteProduct(id);
+    if (!id) {
+        return res.status(400).end('"id" is missing from the params!');
+    }
 
-    res.status(200).json({ message: "deleted." });
+    try {
+        await dao.deleteProduct(id);
+        res.status(204).end();
+    } catch (error) {
+        if (error instanceof NotFoundError) {
+            return res.status(404).end(error.message);
+        }
+
+        res.status(500).end(error.message);
+    }
+
 }
 
 const updateProduct = async (req, res) => {
     const id = req.query.id;
     const item = req.body;
 
-    await dao.updateProduct(id, item);
+    const updatedItem = await dao.updateProduct(id, item);
 
-    res.status(200).json({ message: "updated." });
-
-    // console.log("THE ID-------", id);
-    // console.log("THE ITEM------", item);
+    res.status(200).json(updatedItem);
 }
 
 

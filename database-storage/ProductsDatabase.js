@@ -1,5 +1,7 @@
 const uuidv4 = require("uuidv4");
 
+class NotFoundError extends Error { }
+
 class ProductsDatabase {
     constructor(client) {
         this.client = client;
@@ -15,7 +17,13 @@ class ProductsDatabase {
     }
 
     async deleteProduct(id) {
-        return await this.client.delete(id);
+        const deletedItem = await this.client.delete(id);
+
+        if (null === deletedItem) {
+            throw new NotFoundError(`Product with id${id} was not found`);
+        }
+
+        return deletedItem;
     }
 
     async updateProduct(id, item) {
@@ -23,4 +31,4 @@ class ProductsDatabase {
     }
 }
 
-module.exports = ProductsDatabase;
+module.exports = { ProductsDatabase, NotFoundError };

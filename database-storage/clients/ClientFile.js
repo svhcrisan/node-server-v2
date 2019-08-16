@@ -61,32 +61,41 @@ class ClientFile extends Client {
     }
 
     async delete(id) {
+        let deletedItem = null;
         const items = await this.readFile();
         const newItems = items.filter(item => {
-            return item.id !== id;
-        })
+            if (item.id !== id) {
+                return true;
+            }
+
+            deletedItem = item;
+            return false;
+        });
+
         await this.writeFile(newItems);
+        return deletedItem;
     }
 
     async update(id, item) {
         const items = await this.readFile();
 
-        items.map(element => {
+        let updatedElement = null;
+
+        const updatedItems = items.map(element => {
             if (element.id === id) {
-                const elementKeys = Object.keys(element);
                 const itemKeys = Object.keys(item);
 
-                elementKeys.forEach((ekey) => {
-                    itemKeys.forEach((ikey) => {
-                        if (ekey === ikey) {
-                            element[ekey] = item[ikey];
-                        }
-                    })
-                })
+                itemKeys.forEach((key) => {
+                    element[key] = item[key];
+                });
+
+                updatedElement = element;
             }
+
+            return element;
         }) // end map
-        await this.writeFile(items);
-        return item;
+        await this.writeFile(updatedItems);
+        return updatedElement;
     }
 }
 
