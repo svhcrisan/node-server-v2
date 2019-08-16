@@ -19,25 +19,75 @@ class ClientFile extends Client {
         })
     }
 
+    writeFile(data) {
+        return new Promise((resolve, reject) => {
+            const stringifiedData = JSON.stringify(data);
+            fs.writeFile(this.filePath, stringifiedData, async (error) => {
+                if (error) {
+                    return reject(error);
+                }
+
+                return resolve();
+            })
+        })
+    }
+
     async read(params) {
         const items = await this.readFile();
         const paramsKeys = Object.keys(params);
-        let ok = true;
 
         return items.filter(item => {
-            paramsKeys.forEach((paramKey, index) => {
-                const itemKeyz = Object.keys(item);
+            let ok = true;
+            paramsKeys.forEach((paramKey) => {
                 if (!ok) {
                     return;
                 }
-                if (paramKey !== itemKeyz[index]) {
+
+                if (params[paramKey] !== item[paramKey]) {
                     ok = false;
                 }
             }); // end forEach
             return ok;
         })
-
     } // end read
+
+    async create(item) {
+        const items = await this.readFile();
+
+        items.push(item);
+        await this.writeFile(items);
+
+        return item;
+    }
+
+    async delete(id) {
+        const items = await this.readFile();
+        const newItems = items.filter(item => {
+            return item.id !== id;
+        })
+        await this.writeFile(newItems);
+    }
+
+    async update(id, item) {
+        const items = await this.readFile();
+
+        items.map(element => {
+            if (element.id === id) {
+                const elementKeys = Object.keys(element);
+                const itemKeys = Object.keys(item);
+
+                elementKeys.forEach((ekey) => {
+                    itemKeys.forEach((ikey) => {
+                        if (ekey === ikey) {
+                            element[ekey] = item[ikey];
+                        }
+                    })
+                })
+            }
+        }) // end map
+        await this.writeFile(items);
+        return item;
+    }
 }
 
 module.exports = ClientFile;
