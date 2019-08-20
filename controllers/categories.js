@@ -1,16 +1,16 @@
 const ClientFile = require("../database-storage/clients/ClientFile");
-const { ProductsDatabase, NotFoundError, BadRequestError } = require("../database-storage/ProductsDatabase");
+const { CategoriesDatabase, NotFoundError, BadRequestError } = require("../database-storage/CategoriesDatabase");
 const path = require("path");
 const fileClient = new ClientFile(
-    path.resolve(__dirname, "../data/products.json")
+    path.resolve(__dirname, "../data/categories.json")
 );
-const dao = new ProductsDatabase(fileClient);
+const dao = new CategoriesDatabase(fileClient);
 
-const getProduct = async (req, res) => {
+const getCategory = async (req, res) => {
     const id = req.params.id; //id got from route
 
     try {
-        const product = await dao.readProduct(id);
+        const product = await dao.readCategory(id);
 
         res.status(200).json(product);
     } catch (error) {
@@ -23,23 +23,23 @@ const getProduct = async (req, res) => {
     }
 }
 
-const getProducts = async (req, res) => {
+const getCategories = async (req, res) => {
     const params = req.query; //req.params
 
-    const products = await dao.readProducts(params);
+    const products = await dao.readCategories(params);
 
     res.status(200).json(products);
 };
 
-const createProduct = async (req, res) => {
+const createCategory = async (req, res) => {
     const product = req.body;
 
-    const newProduct = await dao.createProduct(product);
+    const newProduct = await dao.createCategory(product);
 
     res.status(201).json(newProduct);
 }
 
-const deleteProduct = async (req, res) => {
+const deleteCategory = async (req, res) => {
     const id = req.query.id;
 
     if (!id) {
@@ -47,7 +47,7 @@ const deleteProduct = async (req, res) => {
     }
 
     try {
-        await dao.deleteProduct(id);
+        await dao.deleteCategory(id);
         res.status(204).end();
     } catch (error) {
         if (error instanceof NotFoundError) {
@@ -59,12 +59,12 @@ const deleteProduct = async (req, res) => {
 
 }
 
-const updateProduct = async (req, res) => {
+const updateCategory = async (req, res) => {
     const id = req.query.id;
     const item = req.body;
 
     try {
-        const updatedItem = await dao.updateProduct(id, item);
+        const updatedItem = await dao.updateCategory(id, item);
 
         res.status(200).json(updatedItem);
     } catch (error) {
@@ -76,4 +76,4 @@ const updateProduct = async (req, res) => {
 }
 
 
-module.exports = { getProducts, createProduct, deleteProduct, updateProduct, getProduct };
+module.exports = { getCategories, getCategory, createCategory, deleteCategory, updateCategory };

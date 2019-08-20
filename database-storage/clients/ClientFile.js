@@ -49,7 +49,22 @@ class ClientFile extends Client {
             }); // end forEach
             return ok;
         })
+
     } // end read
+
+    async findById(id) {
+        const items = await this.readFile();
+        let foundItem = null;
+        console.log("first found item:", foundItem);
+
+
+        foundItem = items.find((item) => {
+            return item.id === id;
+        })
+
+        console.log("second found item:", foundItem);
+        return foundItem;
+    }
 
     async create(item) {
         const items = await this.readFile();

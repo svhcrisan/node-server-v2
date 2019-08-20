@@ -5,6 +5,11 @@ class Client {
         throw new Error("Default read function.");
     }
 
+    findById(id) {
+        console.log("This is read method.");
+        throw new Error("Default read function.");
+    }
+
     create(item) {
         console.log("This is create method.");
         throw new Error("Default create function.");

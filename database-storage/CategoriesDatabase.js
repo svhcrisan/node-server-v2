@@ -4,12 +4,12 @@ class NotFoundError extends Error { }
 
 class BadRequestError extends Error { }
 
-class ProductsDatabase {
+class CategoriesDatabase {
     constructor(client) {
         this.client = client;
     }
 
-    async readProduct(id) {
+    async readCategory(id) {
         const item = await this.client.findById(id);
 
         if (undefined === item) {
@@ -19,32 +19,32 @@ class ProductsDatabase {
         return item;
     }
 
-    async readProducts(params) {
+    async readCategories(params) {
         return await this.client.read(params);
     }
 
-    async createProduct(item) {
+    async createCategory(item) {
         item.id = uuidv4();
         return await this.client.create(item);
     }
 
-    async deleteProduct(id) {
+    async deleteCategory(id) {
         const deletedItem = await this.client.delete(id);
 
         if (null === deletedItem) {
-            throw new NotFoundError(`Product with id ${id} was not found.`);
+            throw new NotFoundError(`Category with id ${id} was not found.`);
         }
 
         return deletedItem;
     }
 
-    async updateProduct(id, item) {
+    async updateCategory(id, item) {
         const updatedItem = await this.client.update(id, item);
 
         if (null === updatedItem) {
-            throw new BadRequestError(`Product with id ${id} was not found.`);
+            throw new BadRequestError(`Category with id ${id} was not found.`);
         }
     }
 }
 
-module.exports = { ProductsDatabase, NotFoundError, BadRequestError };
+module.exports = { CategoriesDatabase, NotFoundError, BadRequestError };
