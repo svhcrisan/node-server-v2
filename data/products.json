@@ -1,1 +1,89 @@
-[{"id":"a815957a-0ba9-40b2-a6f5-a009fd14e888","name":"Claire's Cloud 9 Blanc De Whitening Cream","description":"Product description 3","price":"20.00","categories":["9360fedc-6cfc-4f83-8f03-f014003bce57"],"rating":"2.5","manufacturerId":"1","img":"img3.jpg"},{"id":"c31deba5-1859-4590-a1ec-55fe0f8d6dbd","name":"Tonymoly Pure Eco Snail Moisture Gel","description":"Product description 4","price":"8.00","categories":["9360fedc-6cfc-4f83-8f03-f014003bce57"],"rating":"5.0","manufacturerId":"3","img":"img4.jpg"},{"id":"9b9b27e1-a911-479c-b9d8-6657cebf605f","name":"Skin79 Fresh Garden Mask - Snail","description":"Product description 5","price":"25.00","categories":["af0f114e-5f1d-4a92-a478-1d8bc0061841","9360fedc-6cfc-4f83-8f03-f014003bce57","bfe2be89-03e7-47b0-900f-496995767b06"],"rating":"4.5","manufacturerId":"1","img":"img5.jpg"},{"id":"c7957207-c97d-4f98-90ba-a7cf60eb448f","name":"Cosrx Advanced Snail 92 All in One Cream","description":"Product description 6","price":"24.00","categories":["af0f114e-5f1d-4a92-a478-1d8bc0061841"],"rating":"4.5","manufacturerId":"1","img":"img6.jpg"},{"id":"86bfd2a8-4b09-46e4-bb70-182af2525665","name":"Innisfree Canola Honey Mask","description":"Product description 7","price":"14.00","categories":["af0f114e-5f1d-4a92-a478-1d8bc0061841"],"rating":"1.5","manufacturerId":"1","img":"img7.jpg"},{"id":"3fd71ba8-3ff6-4093-a4f6-893f36ed7a9a","name":"Scinic Honey Banana Cleansing Foam","description":"Product description 8","price":"4.00","categories":["af0f114e-5f1d-4a92-a478-1d8bc0061841"],"rating":"2.5","manufacturerId":"1","img":"img8.jpg","detroit":"dededed"},{"name":"Crema de plaja cu cocos","description":"Product description 8","price":"4.00","categories":["af0f114e-5f1d-4a92-a478-1d8bc0061841"],"rating":"2.5","manufacturerId":"1","img":"img8.jpg","id":"697ef651-05ba-4754-aa2e-e7cca307b0e9"}]
+[
+    {
+        "id": "a815957a-0ba9-40b2-a6f5-a009fd14e888",
+        "name": "Claire's Cloud 9 Blanc De Whitening Cream",
+        "description": "Product description 3",
+        "price": "20.00",
+        "categories": [
+            "9360fedc-6cfc-4f83-8f03-f014003bce57"
+        ],
+        "rating": "2.5",
+        "manufacturerId": "1",
+        "img": "img3.jpg"
+    },
+    {
+        "id": "c31deba5-1859-4590-a1ec-55fe0f8d6dbd",
+        "name": "Tonymoly Pure Eco Snail Moisture Gel",
+        "description": "Product description 4",
+        "price": "8.00",
+        "categories": [
+            "9360fedc-6cfc-4f83-8f03-f014003bce57"
+        ],
+        "rating": "5.0",
+        "manufacturerId": "3",
+        "img": "img4.jpg"
+    },
+    {
+        "id": "9b9b27e1-a911-479c-b9d8-6657cebf605f",
+        "name": "Skin79 Fresh Garden Mask - Snail",
+        "description": "Product description 5",
+        "price": "25.00",
+        "categories": [
+            "af0f114e-5f1d-4a92-a478-1d8bc0061841",
+            "9360fedc-6cfc-4f83-8f03-f014003bce57",
+            "bfe2be89-03e7-47b0-900f-496995767b06"
+        ],
+        "rating": "4.5",
+        "manufacturerId": "1",
+        "img": "img5.jpg"
+    },
+    {
+        "id": "c7957207-c97d-4f98-90ba-a7cf60eb448f",
+        "name": "Cosrx Advanced Snail 92 All in One Cream",
+        "description": "Product description 6",
+        "price": "24.00",
+        "categories": [
+            "af0f114e-5f1d-4a92-a478-1d8bc0061841"
+        ],
+        "rating": "4.5",
+        "manufacturerId": "1",
+        "img": "img6.jpg"
+    },
+    {
+        "id": "86bfd2a8-4b09-46e4-bb70-182af2525665",
+        "name": "Innisfree Canola Honey Mask",
+        "description": "Product description 7",
+        "price": "14.00",
+        "categories": [
+            "af0f114e-5f1d-4a92-a478-1d8bc0061841"
+        ],
+        "rating": "1.5",
+        "manufacturerId": "1",
+        "img": "img7.jpg"
+    },
+    {
+        "id": "3fd71ba8-3ff6-4093-a4f6-893f36ed7a9a",
+        "name": "Scinic Honey Banana Cleansing Foam",
+        "description": "Product description 8",
+        "price": "4.00",
+        "categories": [
+            "af0f114e-5f1d-4a92-a478-1d8bc0061841"
+        ],
+        "rating": "2.5",
+        "manufacturerId": "1",
+        "img": "img8.jpg",
+        "detroit": "dededed"
+    },
+    {
+        "name": "Crema de plaja cu cocos",
+        "description": "Product description 8",
+        "price": "4.00",
+        "categories": [
+            "af0f114e-5f1d-4a92-a478-1d8bc0061841"
+        ],
+        "rating": "2.5",
+        "manufacturerId": "1",
+        "img": "img8.jpg",
+        "id": "697ef651-05ba-4754-aa2e-e7cca307b0e9"
+    }
+]
